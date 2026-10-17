@@ -42,7 +42,7 @@ review before it is added.
 2. Run format, validation, linting, and security checks.
 3. Review the Terraform plan before applying it.
 4. Apply only through the approved pipeline or documented local break-glass procedure.
-5. Record significant architecture changes in `formula-docs/adr`.
+5. Record significant architecture changes in `platform-docs/adr`.
 
 ## Cost control
 
@@ -59,7 +59,7 @@ expires-at = ISO-8601 timestamp
 ```
 
 These tags follow the time-boxed validation environment design in
-`formula-docs/architecture/aws-time-boxed-validation-environment.md`.
+`platform-docs/architecture/aws-time-boxed-validation-environment.md`.
 
 ## Quality gates
 
@@ -73,4 +73,4 @@ Every merge request must pass:
 
 ## Related documents
 
-See ADR-004 in `formula-docs` for the local-first and cost-control decision. Deployment state belongs in `platform-gitops`, not in this repository.
+See ADR-004 in `platform-docs` for the local-first and cost-control decision. Deployment state belongs in `platform-gitops`, not in this repository.
