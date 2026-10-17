@@ -27,14 +27,14 @@ No cloud resource may be created or changed manually when an equivalent Terrafor
 ```text
 modules/              # reusable Terraform modules
 environments/
-  aws-lab/            # time-boxed three-node K3s validation environment
+  dev/                # time-boxed three-node K3s validation environment
 policies/             # optional policy-as-code checks
 docs/                 # provider setup and teardown notes
 ```
 
-`aws-lab` is the only approved environment. Persistent `dev` and `prod`
-environments are future work and require a new cost review before they are
-added.
+`dev` is the only approved environment and is used for short-lived test
+sessions only. A `prod` environment is future work and requires a new cost
+review before it is added.
 
 ## Workflow
 
@@ -52,7 +52,7 @@ Every resource must include, where supported:
 
 ```text
 project = formula-insights
-environment = aws-lab
+environment = dev
 managed-by = terraform
 owner = fabricio
 expires-at = ISO-8601 timestamp
