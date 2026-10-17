@@ -27,11 +27,14 @@ No cloud resource may be created or changed manually when an equivalent Terrafor
 ```text
 modules/              # reusable Terraform modules
 environments/
-  dev/                # development environment root module
-  prod/               # production environment root module
+  dev/                # time-boxed three-node K3s validation environment
 policies/             # optional policy-as-code checks
 docs/                 # provider setup and teardown notes
 ```
+
+`dev` is the only approved environment and is used for short-lived test
+sessions only. A `prod` environment is future work and requires a new cost
+review before it is added.
 
 ## Workflow
 
@@ -39,7 +42,7 @@ docs/                 # provider setup and teardown notes
 2. Run format, validation, linting, and security checks.
 3. Review the Terraform plan before applying it.
 4. Apply only through the approved pipeline or documented local break-glass procedure.
-5. Record significant architecture changes in `platform-docs/adr`.
+5. Record significant architecture changes in `formula-docs/adr`.
 
 ## Cost control
 
@@ -49,10 +52,14 @@ Every resource must include, where supported:
 
 ```text
 project = formula-insights
-environment = dev | prod
+environment = dev
 managed-by = terraform
 owner = fabricio
+expires-at = ISO-8601 timestamp
 ```
+
+These tags follow the time-boxed validation environment design in
+`formula-docs/architecture/aws-time-boxed-validation-environment.md`.
 
 ## Quality gates
 
@@ -66,4 +73,4 @@ Every merge request must pass:
 
 ## Related documents
 
-See ADR-004 in `platform-docs` for the local-first and cost-control decision. Deployment state belongs in `platform-gitops`, not in this repository.
+See ADR-004 in `formula-docs` for the local-first and cost-control decision. Deployment state belongs in `platform-gitops`, not in this repository.
